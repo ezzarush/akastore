@@ -79,6 +79,20 @@ if($this->input->post('is_submitted'))
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-addon" style="min-width:150px;text-align:left;">Kategori</div>
+									<select class="form-control" name="category">
+										<?php
+											foreach($category as $row){
+												?>
+												<option <?=$row['id_category']==$product->id_category?'selected':'';?> value="<?=$row['id_category'];?>"><?=$row['category_name'];?></option>
+												<?php
+											}
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon" style="min-width:150px;text-align:left;">Pro Name</div>
 									<input type="text" class="form-control" name="pro_name" placeholder="Enter Product Primary Name" value="<?= $pro_name ?>">
 								</div>
 							</div>

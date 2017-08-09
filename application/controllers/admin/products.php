@@ -91,6 +91,7 @@ class Products extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 			{
 				$data['product'] = $this->model_products->find($pro_id);
+				$data['category'] = $this->model_products->category();	
 				$this->load->view('backend/form_update_product',$data);
 			} else {
 				if($_FILES['userfile']['name'] != '')
@@ -112,6 +113,7 @@ class Products extends CI_Controller {
 							$upload_image = $this->upload->data();
 							$data_products = array(
 								'pro_name'			=> set_value('pro_name'),
+								'category'			=> set_value('category'),
 								'pro_title'			=> set_value('pro_title'),
 								'pro_description'	=> set_value('pro_description'),
 								'pro_price'			=> set_value('pro_price'),
@@ -124,6 +126,7 @@ class Products extends CI_Controller {
 				}else{
 						$data_products = array(
 						'pro_name'			=> set_value('pro_name'),
+						'id_category'			=> set_value('category'),
 						'pro_title'			=> set_value('pro_title'),
 						'pro_description'	=> set_value('pro_description'),
 						'pro_price'			=> set_value('pro_price'),
@@ -180,8 +183,26 @@ class Products extends CI_Controller {
 		$this->load->view('backend/form_create_category',$data);
 	}
 	
+	public function category_add_action(){
+		$this->db->insert('category',array('category_name'=>$this->input->post('category')));
+		redirect(base_url('admin/products/category'));
+	}
+	
 	public function category_upd($id_cat){
-		
+		$data['get_sitename'] 	= $this->model_settings->sitename_settings();
+		$data['get_footer'] 	= $this->model_settings->footer_settings();	
+		$data['category'] 		= $this->model_products->category_prod($id_cat);	
+		$this->load->view('backend/form_edit_category',$data);
+	}
+	
+	public function category_upd_action(){
+		$this->db->where('id_category',$this->input->post('id_cat'))->update('category',array('category_name'=>$this->input->post('category')));
+		redirect(base_url('admin/products/category'));
+	}
+	
+	public function category_del($id_cat){
+		$this->db->where('id_category',$id_cat)->delete('category');
+		redirect(base_url('admin/products/category'));
 	}
 	
 	public function active_usr($usr_id)

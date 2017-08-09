@@ -82,8 +82,8 @@
                     <?php foreach ($products as $product ) : ?>
 									<tr>
 										<td><?=  $product->pro_id  ?></td>
-										<td><?=  $product->pro_name  ?></td>
-										<td><?=  $product->pro_title  ?></td>
+										<td><?=  $product->category_name!=''?$product->category_name:'<strong style="color:red;">Belum mapping category</strong>'  ?></td>
+										<td><?=  $product->pro_name .' - '. $product->pro_title  ?></td>
 										<td><?=  $product->pro_description  ?></td>
 										<td><?=  $product->pro_price  ?></td>
 										<td><?=  $product->pro_stock  ?></td>

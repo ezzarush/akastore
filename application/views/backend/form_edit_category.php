@@ -37,84 +37,69 @@
 	<body>
 		
 		<!-- Navigation -->
-		<?php $this->load->view('layout/dash_navigation')?>
+		<?php $this->load->view('layout/navigation')?>
 		<!-- Header- dash_menu -->
 		<?php $this->load->view('layout/dash_menu')?>
 		<!-- Page Content -->
 		<div class="container">
 			<!-- /.row -->
-			<div class="table">
+			<div class="row">
 				<!-- body items -->
 	
 				<div class="col-md-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4><i class="fa fa-fw fa-user"></i> Category</h4>
-							
-						</div>
+							<h4>
+								<i class="fa fa-archive"></i> Products <?=  anchor('admin/products/create','Add New Product',['class'=>'btn btn-primary btn-xs']) ?>
+							</h4>
+						</div><!-- /..panel-heading -->
 						<div class="panel-body">
-							<table class="table table-striped table-hover" id="tableproducts">
-								<div align="right" style="padding:10px;">
-								<?=  anchor('admin/products/category_add/','Add Category',['class'=>'btn btn-primary '])  ?>
+						<div><?= validation_errors()?></div>
+						<?=  form_open_multipart('admin/products/category_upd_action',['class'=>'form-group']) ?>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon" style="min-width:150px;text-align:left;">Kategori</div>
+									<input type="hidden" value="<?=isset($category['id_category'])?$category['id_category']:'' ?>" name="id_cat">
+									<input type="text" class="form-control" required name="category" placeholder="Enter Category Name" value="<?=isset($category['category_name'])?$category['category_name']:'' ?>">
 								</div>
-								<thead>
-									<tr>
-										<th>No.</th>
-										<th>ID Category</th>
-										<th>Category Name</th>
-										<th>Aksi</th>
-									</tr>
-								</thead>
-								<tbody>
-								<?php $x=1; foreach ($category as $cat ) : ?>
-								<tr>
-										<td><?=  $x;  ?></td>
-										<td><?=  $cat['id_category'];  ?></td>
-										
-										<td><?=  $cat['category_name'];  ?></td>
-										<td>
-										<?=  anchor('admin/products/category_upd/'.$cat['id_category'],'Edit ',['class'=>'btn btn-success btn-xs '
-										])  ?>
-										<?=  anchor('admin/products/category_del/'.$cat['id_category'],'Delete ',['class'=>'btn btn-warning btn-xs ',
-											'onclick'=>'return confirm(\'Are You Sure You Want Disabled This user ? \')'
-										])  ?>
-								</td>
-						<?php $x++; endforeach; ?>	
-						</tbody>
-							</table>
-							<script>
-								$(document).ready(function(){
-									$('#tableproducts').DataTable();
-									
-								});
-							</script>
-						</div>
-					</div>
+							</div>
+							
+							
+							<div class="form-inline">
+							
+							
+							<div class="form-group">
+								<div class="input-group">
+									<button type="submit" class="btn btn-primary">Update</button>&nbsp;
+									<?=  anchor('admin/products','Cancel',['class'=>'btn btn-danger']) ?>
+								</div>
+							</div>
+							
+							</div>
+							
+							
+							
+							
+							
+						
+						<?= form_close() ?>
+						</div><!-- /..panel-body -->
+					</div><!-- /..panel panel-default -->
 				</div> 
 				
 			</div>
 			<!-- /.row -->
-			
-			<!-- Features Section -->
-			
-			<!-- /.row -->
-			
-			
+			<hr>
 			<!-- Footer -->
 			<?php $this->load->view('layout/footer')?>
 			
 		</div>
-		<!-- /.container -->
+		<!-- /.. container -->
 		
 		<!-- jQuery -->
 		<script src="js/jquery.js"></script>
 		
 		<!-- Bootstrap Core JavaScript -->
 		<script src="js/bootstrap.min.js"></script>
-		
-		<!-- Script to Activate the Carousel -->
-		
-		
 	</body>
-	
 </html>

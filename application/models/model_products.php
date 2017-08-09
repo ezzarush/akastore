@@ -5,7 +5,9 @@ class Model_products extends CI_Model {
 	
 		public function all_products()
 		{ 
-			$show = $this->db->get('products');
+			$this->db->select('a.*,b.category_name');
+			$this->db->join('category b','b.id_category = a.id_category','left');
+			$show = $this->db->get('products a');
 			if($show->num_rows() > 0 ) {
 					return $show->result();
 			} else {
@@ -74,6 +76,10 @@ class Model_products extends CI_Model {
 	
 	public function category(){
 		return $this->db->get('category')->result_array();
+	}
+	
+	public function category_prod($id_category){
+		return $this->db->get_where('category',array('id_category'=>$id_category))->result_array()[0];
 	}
 	
 	public function reports()

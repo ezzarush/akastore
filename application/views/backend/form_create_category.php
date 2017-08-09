@@ -55,47 +55,17 @@
 						</div><!-- /..panel-heading -->
 						<div class="panel-body">
 						<div><?= validation_errors()?></div>
-						<?=  form_open_multipart('admin/products/create',['class'=>'form-group']) ?>
+						<?=  form_open_multipart('admin/products/category_add_action',['class'=>'form-group']) ?>
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-addon" style="min-width:150px;text-align:left;">Kategori</div>
-									<input type="text" class="form-control" name="pro_name" placeholder="Enter Product Primary Name" value="<?= set_value('pro_name') ?>">
+									<input type="text" class="form-control" required name="category" placeholder="Enter Category Name">
 								</div>
 							</div>
-							<div class="form-group">
-								<div class="input-group">
-									<div class="input-group-addon" style="min-width:150px;text-align:left;">Nama Produk</div>
-									<input type="text" class="form-control" name="pro_title" placeholder="Enter Product Title" value="<?= set_value('pro_title') ?>">
-								</div>
-							</div>
-						
-							<div class="form-group">
-								<div class="input-group">
-								<div class="input-group-addon" style="min-width:150px;text-align:left;">Deskripsi</div>
-									<textarea rows="4" class="form-control col-md-12" name="pro_description" placeholder="Enter Product Description , Example : Dell INSPIRON Ram:2GB , AVG : 1 , CPU : 3200 Intel Core i5"><?= set_value('pro_description') ?></textarea>
-								</div>
-							</div>
+							
 							
 							<div class="form-inline">
-							<div class="form-group">
-								<div class="input-group">
-									<div class="input-group-addon">Harga</div>
-									<input type="text" class="form-control" name="pro_price" placeholder="Enter Product Price" value="<?= set_value('pro_price') ?>">
-									<div class="input-group-addon">Rp</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="input-group">
-									<div class="input-group-addon">Available Stock</div>
-									<input type="text" class="form-control" name="pro_stock" value="<?= set_value('pro_stock') ?>">
-								</div>
-							</div>
 							
-							<div class="form-group">
-								<div class="input-group">
-									<input type="file" name="userfile">
-								</div>
-							</div>
 							
 							<div class="form-group">
 								<div class="input-group">
