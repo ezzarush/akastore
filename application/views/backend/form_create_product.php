@@ -59,12 +59,6 @@
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-addon" style="min-width:150px;text-align:left;">Kategori</div>
-									<input type="text" class="form-control" name="pro_name" placeholder="Enter Product Primary Name" value="<?= set_value('pro_name') ?>">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="input-group">
-									<div class="input-group-addon" style="min-width:150px;text-align:left;">Kategori</div>
 									<select class="form-control" name="category">
 										<?php
 											foreach($category as $row){
@@ -74,6 +68,12 @@
 											}
 										?>
 									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon" style="min-width:150px;text-align:left;">Pro Name</div>
+									<input type="text" class="form-control" name="pro_name" placeholder="Enter Pro Name" value="<?= set_value('pro_name') ?>">
 								</div>
 							</div>
 							<div class="form-group">
