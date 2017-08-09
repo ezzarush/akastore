@@ -7,13 +7,13 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-th-large"></i> Select a Product : <i class="fa fa-arrow-circle-down"></i> </h4>
+                        <h4><i class="fa fa-th-large"></i> Choose Category : <i class="fa fa-arrow-circle-down"></i> </h4>
                     </div>
                     <div class="panel-body">
                         <p> 
-							<?php foreach ($starts as $start ) : ?>
+							<?php foreach ($starts as $start ) :?>
 							<!-- here to get name of product and show all ot same type -->
-								<?=  anchor('home/showme/'.$start->pro_name,$start->pro_name,['class'=>'btn btn-default']) ?>
+								<?=  anchor('home/showme/'.$start['id_category'],$start['category_name'],['class'=>'btn btn-default']) ?>
                             <?php endforeach; ?>
                         </p>
                     </div>

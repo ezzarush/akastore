@@ -17,7 +17,8 @@ class Home extends CI_Controller {
 		$data['get_sitename'] = $this->model_settings->sitename_settings();
 		$data['get_footer'] = $this->model_settings->footer_settings();	
 		$data['products'] = $this->model_products->all_products();	//this all_products from model 
-		$data['starts'] = $this->model_products->dis_products();
+		// $data['starts'] = $this->model_products->dis_products();
+		$data['starts'] 		= $this->model_products->category();	
 		$this->load->view('home',$data); //this $data from model inside class model_products
 	}
 	
@@ -25,7 +26,8 @@ class Home extends CI_Controller {
 	{		
 			$data['get_sitename'] = $this->model_settings->sitename_settings();
 			$data['get_footer'] = $this->model_settings->footer_settings();	
-			$data['starts'] = $this->model_products->dis_products();
+			// $data['starts'] = $this->model_products->dis_products();
+			$data['starts'] 		= $this->model_products->category();	
 			$data['comes'] = $this->model_products->showme($pro_name); //for showme function in home/showme
 			$this->load->view('this_products',$data);
 	}
