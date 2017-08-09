@@ -64,6 +64,20 @@
 							</div>
 							<div class="form-group">
 								<div class="input-group">
+									<div class="input-group-addon" style="min-width:150px;text-align:left;">Kategori</div>
+									<select class="form-control" name="category">
+										<?php
+											foreach($category as $row){
+												?>
+												<option value="<?=$row['id_category'];?>"><?=$row['category_name'];?></option>
+												<?php
+											}
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
 									<div class="input-group-addon" style="min-width:150px;text-align:left;">Nama Produk</div>
 									<input type="text" class="form-control" name="pro_title" placeholder="Enter Product Title" value="<?= set_value('pro_title') ?>">
 								</div>

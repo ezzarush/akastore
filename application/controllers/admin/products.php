@@ -41,6 +41,7 @@ class Products extends CI_Controller {
 		
 		if ($this->form_validation->run() == FALSE)
 		{
+			$data['category'] = $this->model_products->category();	
 			$this->load->view('backend/form_create_product',$data);	
 				
 		}else{
@@ -54,6 +55,7 @@ class Products extends CI_Controller {
 				
 			if ( ! $this->upload->do_upload())
 			{	
+				$data['category'] = $this->model_products->category();	
 				$this->load->view('backend/form_create_product');
 				
 				
@@ -63,6 +65,7 @@ class Products extends CI_Controller {
 					$data_products = array
 					(
 						'pro_name'			=> set_value('pro_name'),
+						'id_category'		=> set_value('category'),
 						'pro_title'			=> set_value('pro_title'),
 						'pro_description'	=> set_value('pro_description'),
 						'pro_price'			=> set_value('pro_price'),
@@ -107,6 +110,7 @@ class Products extends CI_Controller {
 					if ( ! $this->upload->do_upload())
 					{	
 						$data['product'] = $this->model_products->find($pro_id);
+						$data['category'] = $this->model_products->category();	
 						$this->load->view('backend/form_update_product',$data);
 						
 					}else{
