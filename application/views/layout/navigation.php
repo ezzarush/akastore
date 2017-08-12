@@ -93,7 +93,49 @@
 							
 						</ul>
 					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-left">
+							<?php
+							$CI =& get_instance();
+							// $data = $CI->db->query("SELECT * FROM category c LEFT JOIN subcategory sc ON sc.id_category = c.id_category")->result_array();
+							$data = $CI->db->query("SELECT *,COALESCE((SELECT id_subcategory FROM subcategory sc WHERE sc.id_category=c.id_category GROUP BY sc.id_category),0)ok FROM category c")->result_array();
+							$data2 = $CI->db->query("SELECT * FROM subcategory")->result_array();
+							foreach($data as $row){
+								if($row['ok']==0){
+								?>
+									<li class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?=$row['category_name'];?>
+										</a>
+										
+									</li>
+								<?php								
+								}else{
+								?>
+									<li class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?=$row['category_name'];?>
+										<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+										<?php
+										foreach($data2 as $row2){
+											if($row2['id_category'] == $row['id_category']){
+											?>
+												<li><a href="<?=$row2['id_subcategory'];?>"><?=$row2['subcategory'];?></a></li>
+											<?php											
+											}
+										?>
+										<?php
+										}
+										?>
+										</ul>
+									</li>
+								<?php								
+								}
+							}
+							?>							
+						</ul>
+					</div>
 					<!-- /.navbar-collapse -->
 				</div>
 				<!-- /.container -->
 			</nav>
+			<br/><br/>
