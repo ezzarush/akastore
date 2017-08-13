@@ -97,7 +97,6 @@
 						<ul class="nav navbar-nav navbar-left">
 							<?php
 							$CI =& get_instance();
-							// $data = $CI->db->query("SELECT * FROM category c LEFT JOIN subcategory sc ON sc.id_category = c.id_category")->result_array();
 							$data = $CI->db->query("SELECT *,COALESCE((SELECT id_subcategory FROM subcategory sc WHERE sc.id_category=c.id_category GROUP BY sc.id_category),0)ok FROM category c")->result_array();
 							$data2 = $CI->db->query("SELECT * FROM subcategory")->result_array();
 							foreach($data as $row){
