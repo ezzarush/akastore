@@ -21,7 +21,7 @@
 						<?php
 							$CI =& get_instance();
 							$data = $CI->db->query("SELECT *,COALESCE((SELECT id_subcategory FROM subcategory sc WHERE sc.id_category=c.id_category GROUP BY sc.id_category),0)ok FROM category c")->result_array();
-							$data2 = $CI->db->query("SELECT * FROM subcategory")->result_array();
+							$data2 = $CI->db->query("SELECT sc.* FROM subcategory sc")->result_array();
 							foreach($data as $row){
 								if($row['ok']==0){
 								?>
@@ -38,6 +38,7 @@
 										<ul class="dropdown-menu" role="menu">
 										
 											<?php
+											// print_r($data2);
 											foreach($data2 as $row2){
 												if($row2['id_category'] == $row['id_category']){
 												?>

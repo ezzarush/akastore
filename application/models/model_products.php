@@ -26,7 +26,7 @@ class Model_products extends CI_Model {
 		public function showme($pro_name) 
 		{ 
 			
-			$query = $this->db->get_where('products', array('id_category' => $pro_name));
+			$query = $this->db->get_where('products', array('id_subcategory' => $pro_name));
 			return $query->result();
 			
 		}
